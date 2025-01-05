@@ -6,8 +6,7 @@
     <title>Restaurant Menu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        
-* {
+    * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -26,7 +25,6 @@ body {
     max-width: 1200px;
 }
 
-
 header {
     background: rgba(51, 51, 51, 0.95);
     color: white;
@@ -41,6 +39,7 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative; /* Add relative positioning to hold the icon */
 }
 
 header h1 {
@@ -70,7 +69,6 @@ nav ul li a:hover {
     transform: scale(1.1);
 }
 
-/* Hero Section */
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero-bg.jpg') no-repeat center center/cover;
     color: white;
@@ -83,26 +81,57 @@ nav ul li a:hover {
     margin-bottom: 10px;
 }
 
+.btn-container {
+    text-align: center;
+}
 
-.image-gallery {
-    padding: 60px 0;
-    background-color: #fff;
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    margin-top: 15px !important;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .image-gallery .container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
+}
+
+.image-box {
+    flex: 1 1 23%;
+    box-sizing: border-box;
 }
 
 .image-box img {
     width: 100%;
     height: 300px;
     object-fit: cover;
-    border-radius: 50%; 
+    border-radius: 50%;
 }
 
+@media (max-width: 768px) {
+    .image-gallery .container {
+        justify-content: center;
+    }
 
+    .image-box {
+        flex: 1 1 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-box {
+        flex: 1 1 100%;
+    }
+}
 
 .menu {
     padding: 70px 0;
@@ -119,98 +148,30 @@ nav ul li a:hover {
 .menu-items {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
+    justify-content: space-between;
+    gap: 20px;
 }
 
-.item {
-    background: #ffffff;
-    margin: 20px;
-    padding: 25px;
-    flex: 1 1 calc(30% - 40px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.btn-container {
-    text-align: center; 
-}
-
-.btn {
-    display: inline-block;  
-    padding: 15px 30px;
-    background-color: #ff6347;
-    color: white;
-    border: none;
-    font-size: 1rem;
-    margin-top: 15px !important;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
+.menu-items .item {
+    width: calc(25% - 20px);
+    box-sizing: border-box;
+    transition: transform 1.3s ease-in-out, opacity 1.3s ease-in-out;
 }
 
 .menu-items .item img {
-    opacity: 1;
-    transform: translateY(0);
-    transition: transform 1.3s ease-in-out, opacity 1.3s ease-in-out; 
-}
-
-.menu-items .item img:hover {
-    transform: scale(1.05);  
-    opacity: 0.9;  
-}
-
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-.menu-items .item img {
-    animation: fadeInUp 1s ease-out forwards;
-}
-
-
-.menu-items .item:nth-child(1) img {
-    animation-delay: 0.3s;
-}
-
-.menu-items .item:nth-child(2) img {
-    animation-delay: 0.6s;
-}
-
-.menu-items .item:nth-child(3) img {
-    animation-delay: 0.9s;
-}
-
-.menu-items .item:nth-child(4) img {
-    animation-delay: 1.2s;
-}
-
-.menu-items .item:nth-child(5) img {
-    animation-delay: 1.5s;
-}
-
-.menu-items .item:nth-child(6) img {
-    animation-delay: 1.8s;
-}
-
-
-.item img {
     width: 100%;
     height: 250px;
     object-fit: cover;
     border-radius: 10px 10px 0 0;
+    transition: transform 1.3s ease-in-out, opacity 1.3s ease-in-out;
 }
 
-.item button {
+.menu-items .item:hover img {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.menu-items .item button {
     width: 100%;
     padding: 15px;
     background-color: #ff6347;
@@ -222,8 +183,14 @@ nav ul li a:hover {
     cursor: pointer;
 }
 
-.item button:hover {
+.menu-items .item button:hover {
     background-color: #e5533d;
+}
+
+@media (max-width: 768px) {
+    .menu-items .item {
+        width: 100%; /* Stack the items vertically */
+    }
 }
 
 .contact {
@@ -236,12 +203,13 @@ nav ul li a:hover {
     justify-content: space-between;
     align-items: center;
     gap: 40px;
+    flex-wrap: wrap;
 }
 
 .contact-image img {
     width: 100%;
-    max-width: 500px; 
-    border-radius: 15px; 
+    max-width: 500px;
+    border-radius: 15px;
 }
 
 .contact-form {
@@ -265,7 +233,8 @@ nav ul li a:hover {
     display: block;
 }
 
-.contact input, .contact textarea {
+.contact input,
+.contact textarea {
     width: 100%;
     padding: 15px;
     border: 1px solid #ddd;
@@ -289,38 +258,8 @@ nav ul li a:hover {
     background-color: #555;
 }
 
-
 @media (max-width: 768px) {
     .contact-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .contact-image img {
-        max-width: 100%;
-    }
-}
-
-
-footer {
-    background: rgba(51, 51, 51, 0.9);
-    color: white;
-    text-align: center;
-    padding: 1.5rem 0;
-}
-
-footer p {
-    font-size: 1rem;
-}
-
-
-@media (max-width: 768px) {
-    .image-gallery .container {
-        flex-direction: column;
-    }
-
-    .contact .container {
         flex-direction: column;
         align-items: center;
     }
@@ -335,12 +274,102 @@ footer p {
     }
 }
 
-    </style>
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 0;
+}
+
+.menu-icon {
+    display: block;
+    position: absolute;
+    right: 20px;  /* Align the icon to the right */
+    top: 50%;
+    transform: translateY(-50%);  /* Vertically center the icon */
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.menu-toggle:checked + .menu-icon + nav ul {
+    display: flex;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+nav ul li a:hover {
+    background: #ff6347;
+    transform: scale(1.1);
+}
+
+@media (min-width: 768px) {
+    .menu-icon {
+        display: none;  /* Hide the hamburger menu on large devices */
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: flex-end;  /* Align menu links to the right */
+        gap: 25px;
+    }
+
+    nav ul li a {
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .menu-toggle:checked + .menu-icon + nav ul {
+        display: flex;
+    }
+
+    nav ul li a {
+        padding: 15px;
+        text-align: center;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+}
+
+</style>
+    
 </head>
 <body>
+
     <header>
         <div class="container">
             <h1>Restaurant</h1>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </label>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
@@ -348,6 +377,7 @@ footer p {
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
+            
         </div>
     </header>
 
@@ -355,15 +385,12 @@ footer p {
         <div class="container">
             <h2>Welcome to Our Restaurant</h2>
             <p>Enjoy the best meals and a wonderful atmosphere.</p>
-            <p>We serve fresh and delicious dishes crafted with love and care by our experienced chefs. Our restaurant offers a cozy ambiance perfect for family dinners, romantic dates, and friendly gatherings.</p>
-<div class="btn-container">
-    <a href="#menu" class="btn">Explore Menu</a>
-</div>
-
+            <div class="btn-container">
+                <a href="#menu" class="btn">Explore Menu</a>
+            </div>
         </div>
     </section>
 
-    <!-- 4 images instead of feature section -->
     <section class="image-gallery">
         <div class="container">
             <div class="image-box">
@@ -409,11 +436,18 @@ footer p {
                     <img src="images/now6.jpeg" alt="Dish 6">
                     <button>Order Now</button>
                 </div>
+                <div class="item">
+                    <img src="images/now7.jpeg" alt="Dish 7">
+                    <button>Order Now</button>
+                </div>
+                <div class="item">
+                    <img src="images/now8.jpeg" alt="Dish 8">
+                    <button>Order Now</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form with Image -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="contact-content">
@@ -441,15 +475,6 @@ footer p {
             </div>
         </div>
     </section>
-    
 
-    <footer>
-        <p>&copy; 2025 Restaurant. All Rights Reserved.</p>
-        <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank" class="fab fa-facebook-f"></a>
-            <a href="https://www.instagram.com" target="_blank" class="fab fa-instagram"></a>
-            <a href="https://wa.me/yourphonenumber" target="_blank" class="fab fa-whatsapp"></a>
-        </div>
-    </footer>
 </body>
 </html>
