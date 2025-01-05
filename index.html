@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+
+header {
+    background: rgba(51, 51, 51, 0.95);
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+nav ul li a:hover {
+    background: #ff6347;
+    transform: scale(1.1);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero-bg.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 150px 0;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+
+.image-gallery {
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+.image-gallery .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.image-box img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%; 
+}
+
+
+
+.menu {
+    padding: 70px 0;
+    text-align: center;
+    background-color: #fff;
+}
+
+.menu h2 {
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    color: #444;
+}
+
+.menu-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.item {
+    background: #ffffff;
+    margin: 20px;
+    padding: 25px;
+    flex: 1 1 calc(30% - 40px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-container {
+    text-align: center; 
+}
+
+.btn {
+    display: inline-block;  
+    padding: 15px 30px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    margin-top: 15px !important;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.menu-items .item img {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 1.3s ease-in-out, opacity 1.3s ease-in-out; 
+}
+
+.menu-items .item img:hover {
+    transform: scale(1.05);  
+    opacity: 0.9;  
+}
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.menu-items .item img {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+
+.menu-items .item:nth-child(1) img {
+    animation-delay: 0.3s;
+}
+
+.menu-items .item:nth-child(2) img {
+    animation-delay: 0.6s;
+}
+
+.menu-items .item:nth-child(3) img {
+    animation-delay: 0.9s;
+}
+
+.menu-items .item:nth-child(4) img {
+    animation-delay: 1.2s;
+}
+
+.menu-items .item:nth-child(5) img {
+    animation-delay: 1.5s;
+}
+
+.menu-items .item:nth-child(6) img {
+    animation-delay: 1.8s;
+}
+
+
+.item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.item button {
+    width: 100%;
+    padding: 15px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    margin-top: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.item button:hover {
+    background-color: #e5533d;
+}
+
+.contact {
+    padding: 70px 0;
+    background-color: #fff;
+}
+
+.contact-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.contact-image img {
+    width: 100%;
+    max-width: 500px; 
+    border-radius: 15px; 
+}
+
+.contact-form {
+    max-width: 600px;
+    flex: 1;
+}
+
+.contact-form h2 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.contact .form-group {
+    margin-bottom: 25px;
+}
+
+.contact label {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.contact input, .contact textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.contact button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.contact button[type="submit"]:hover {
+    background-color: #555;
+}
+
+
+@media (max-width: 768px) {
+    .contact-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-image img {
+        max-width: 100%;
+    }
+}
+
+
+footer {
+    background: rgba(51, 51, 51, 0.9);
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+}
+
+footer p {
+    font-size: 1rem;
+}
+
+
+@media (max-width: 768px) {
+    .image-gallery .container {
+        flex-direction: column;
+    }
+
+    .contact .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-image img {
+        width: 80%;
+        height: auto;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Restaurant</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Welcome to Our Restaurant</h2>
+            <p>Enjoy the best meals and a wonderful atmosphere.</p>
+            <p>We serve fresh and delicious dishes crafted with love and care by our experienced chefs. Our restaurant offers a cozy ambiance perfect for family dinners, romantic dates, and friendly gatherings.</p>
+<div class="btn-container">
+    <a href="#menu" class="btn">Explore Menu</a>
+</div>
+
+        </div>
+    </section>
+
+    <!-- 4 images instead of feature section -->
+    <section class="image-gallery">
+        <div class="container">
+            <div class="image-box">
+                <img src="images/now1.jpeg" alt="Dish 1">
+            </div>
+            <div class="image-box">
+                <img src="images/now2.jpeg" alt="Dish 2">
+            </div>
+            <div class="image-box">
+                <img src="images/now3.jpeg" alt="Dish 3">
+            </div>
+            <div class="image-box">
+                <img src="images/now4.jpeg" alt="Dish 4">
+            </div>
+        </div>
+    </section>
+
+    <section class="menu" id="menu">
+        <div class="container">
+            <h2>Our Menu</h2>
+            <div class="menu-items">
+                <div class="item">
+                    <img src="images/now1.jpeg" alt="Dish 1">
+                    <button>Order Now</button>
+                </div>
+                <div class="item">
+                    <img src="images/now2.jpeg" alt="Dish 2">
+                    <button>Order Now</button>
+                </div>
+                <div class="item">
+                    <img src="images/now3.jpeg" alt="Dish 3">
+                    <button>Order Now</button>
+                </div>
+                <div class="item">
+                    <img src="images/now4.jpeg" alt="Dish 4">
+                    <button>Order Now</button>
+                </div>
+                <div class="item">
+                    <img src="images/now5.webp" alt="Dish 5">
+                    <button>Order Now</button>
+                </div>
+                <div class="item">
+                    <img src="images/now6.jpeg" alt="Dish 6">
+                    <button>Order Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form with Image -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-image">
+                    <img src="images/1736070862633mdii6v05.png" alt="Contact">
+                </div>
+                <div class="contact-form">
+                    <h2>Contact Us</h2>
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <footer>
+        <p>&copy; 2025 Restaurant. All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" target="_blank" class="fab fa-facebook-f"></a>
+            <a href="https://www.instagram.com" target="_blank" class="fab fa-instagram"></a>
+            <a href="https://wa.me/yourphonenumber" target="_blank" class="fab fa-whatsapp"></a>
+        </div>
+    </footer>
+</body>
+</html>
